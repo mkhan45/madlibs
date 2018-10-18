@@ -3,46 +3,44 @@ package com.example.a2020mkhan.madlibs;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.google.gson.Gson;
+public class inputFragment extends Fragment {
 
-public class listFragment extends Fragment {
+    String[] types;
 
-    public listFragment(){
-
+    public inputFragment(String[] t){
+        types = t;
     }
 
-    public static listFragment newInstance() {
-        listFragment fragment = new listFragment();
+    public static inputFragment newInstance(String[] t) {
+        inputFragment fragment = new inputFragment(t);
         return fragment;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.story_list, container, false);
+        final View rootView = inflater.inflate(R.layout.input_frag, container, false);
         LinearLayout ll = rootView.findViewById(R.id.linear);
-        for (int i = 0; i < ll.getChildCount(); i++){
-            View v = ll.getChildAt(i);
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String s = "abc %1$s %2$s %3$s";
-                    String[] words = {"bc", "asdf", "lkji"};
-                    storyFragment storyFrag = new storyFragment(words, s);
-                    FragmentManager fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.frame, storyFrag).addToBackStack(null).commit();
-                }
-            });
+        for (int i = 0; i < types.length; i++){
+            EditText et = new EditText(getContext());
+            et.setHint(types[i]);
+            ll.addView(et);
         }
+        Button save = new Button(getContext());
+        ll.addView(save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //make array of values and save to sharedPreferences
+            }
+        });
         return rootView;
     }
 
