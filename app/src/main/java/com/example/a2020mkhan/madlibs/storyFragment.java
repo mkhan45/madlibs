@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class storyFragment extends Fragment {
+public class storyFragment extends android.support.v4.app.Fragment {
 
     String[] words;
     String story;
