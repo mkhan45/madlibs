@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">madlibs</string>
     <string name="save">save</string>
+    <string name="story1">Once upon a time there was a @person who liked to @verb</string>
 </resources>
