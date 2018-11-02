@@ -37,15 +37,18 @@ public class listFragment extends Fragment {
         ArrayList<String> types = new ArrayList<>();
         String string = getResources().getString(R.string.story1);
         String[] words = string.split(" ");
+        String tempString = "";
         for(String w : words) {
             if (w.startsWith("@")) {
                 types.add(w.substring(1));
                 w = "%s";
             }
+            tempString += w + " ";
         }
         //put words in string
-        storyList.get(0).setStory(string);
+        storyList.get(0).setStory(tempString);
         storyList.get(0).setTypes(types.toArray(new String[9]));
+        storyList.get(0).setTitle("Vacation");
 
 
         newStory.setOnClickListener(new View.OnClickListener() {

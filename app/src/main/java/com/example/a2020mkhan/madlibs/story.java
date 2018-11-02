@@ -1,6 +1,7 @@
 package com.example.a2020mkhan.madlibs;
 
 public class story {
+
     private String title;
     private String story;
     private String[] types;
@@ -38,5 +39,9 @@ public class story {
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
